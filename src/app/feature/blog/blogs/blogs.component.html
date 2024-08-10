@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="blog-container">
+            <div class="card blog" *ngFor="let blog of blogs">
+                <img [src]="blog?.imgUrl" class="card-img-top" [alt]="blog.title">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <div class="card-text">
+                        <div>
+                            <span>Created On</span>  {{blog.date | date:'short'}}
+                        </div>
+                        <div>
+                            <span>Created By</span>  {{blog.author}}
+                        </div>
+                
+                    </div>
+                    <div class="footer">
+                        <a class="btn btn-primary" [routerLink]="'/blogs/'+blog.id">Read</a>
+                        <ng-container *ngIf="blog.author_id==currentLogedinUser.id">
+                            <a class="btn btn-primary" [routerLink]="'/blogs/update/'+blog.id" >Edit</a>
+                            <a class="btn btn-primary" (click)="delete(blog.id!)">Delete</a>
+                        </ng-container>
+                        <ng-container *ngIf="blog.author_id!=currentLogedinUser.id">
+                            <a class="btn btn-primary" (click)="savePost(blog)" >Save</a>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <p *ngIf="!blogs.length">No Blogs Found</p>
+        </div>
+
+    </div>
+</div>

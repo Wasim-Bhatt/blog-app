@@ -1,0 +1,16 @@
+.blog-container{
+    display: flex;
+    column-gap: 10px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog{
+    width:32%
+}
+.footer{
+    padding:10px 0;
+    display: flex;
+    column-gap: 10px;
+}

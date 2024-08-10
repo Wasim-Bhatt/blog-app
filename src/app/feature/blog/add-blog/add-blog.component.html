@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form [formGroup]="blogForm" (ngSubmit)="createPost()">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" id="title" class="form-control" formControlName="title">
+              <div *ngIf="blogForm.get('title')?.touched && blogForm.get('title')?.invalid" class="text-danger">
+                Title is required.
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea id="description" class="form-control" rows="3" formControlName="description"></textarea>
+              <div *ngIf="blogForm.get('description')?.touched && blogForm.get('description')?.invalid" class="text-danger">
+                Description is required.
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <label for="url" class="form-label">URL</label>
+              <input type="url" id="url" class="form-control" formControlName="imgUrl">
+            </div>
+          
+            <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid">Submit</button>
+          </form>
+    </div>
+
+</div>
+
+
+  

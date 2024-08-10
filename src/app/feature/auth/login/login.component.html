@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center full-content">
+    <div class="col-lg-4 col-sm-6">
+      <div class="card p-3 shadow">
+        <div class="title text-center">
+          <h4>Login</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation">
+            <div class="alert alert-danger" *ngIf="isInvalidCredentials">Inavlid Email and/or Password</div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="name@example.com"
+                formControlName="email"
+              />
+              <div *ngIf="loginForm.get('email')?.touched" class="invalid-feedback">
+                <span *ngIf="loginForm.get('email')?.hasError('required')">
+                  Email is required
+                </span>
+                <span *ngIf="loginForm.get('email')?.hasError('email')" >
+                  Please enter a valid email
+                </span>
+            </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="email"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+                <span  class="invalid-feedback">Password is required</span>
+            </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary text-center">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
